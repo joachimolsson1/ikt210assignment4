@@ -8,7 +8,7 @@ metadata:
   name: argocd-server
 spec:
   type: NodePort
-  ports:
+ports:
     - protocol: 
     port: 80
     targetPort: 8080
