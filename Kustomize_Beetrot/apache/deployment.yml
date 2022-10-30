@@ -4,19 +4,19 @@ metadata:
   name: argocd-apache-beetroot
   namespace: argocd-beetroot
   labels:
-    app: apache
+    app: apache-argocd
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: apache
+      app: apache-argocd
   template:
     metadata:
       labels:
         app: apache
     spec:
       containers:
-        - name: apache
+        - name: apache-argocd
           image: httpd:latest
           imagePullPolicy: Always
           ports:

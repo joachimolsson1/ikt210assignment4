@@ -6,7 +6,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: apache
+    app: apache-argocd
   ports:
     - protocol:
       port: 80
