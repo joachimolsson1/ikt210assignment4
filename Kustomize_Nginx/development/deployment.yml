@@ -15,7 +15,7 @@ spec:
       labels:
         app: nginx
     spec:
-     containers:
+      containers:
         - name: nginx
           image: nginx:latest
           imagePullPolicy: Always
