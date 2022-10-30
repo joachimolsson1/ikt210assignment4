@@ -4,13 +4,6 @@ metadata:
   name: apache-config-map
   namespace: argocd-beetroot
 data:
-  index.html: |
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: reverse-config-map
-  namespace: apache-reverseproxy
-data:
   httpd.conf: |
     ServerRoot "/usr/local/apache2"
     Listen 80
