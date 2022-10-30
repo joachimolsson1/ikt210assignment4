@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: reverse-config-map
+  namespace: apache-reverseproxy
+data:
+  httpd.conf: |
+    ServerRoot "/usr/local/apache2"
+    Listen 80
+    ServerName localhost
+    LoadModule authn_file_module modules/mod_authn_file.so
+    LoadModule authn_core_module modules/mod_authn_core.so
+    LoadModule authz_host_module modules/mod_authz_host.so
+    LoadModule authz_groupfile_module modules/mod_authz_groupfile.so
+    LoadModule authz_user_module modules/mod_authz_user.so
+    LoadModule authz_core_module modules/mod_authz_core.so
+    LoadModule log_config_module modules/mod_log_config.so
+    LoadModule proxy_module modules/mod_proxy.so
+    LoadModule proxy_http_module modules/mod_proxy_http.so
+    LoadModule unixd_module modules/mod_unixd.so
+    LoadModule mpm_event_module modules/mod_mpm_event.so
+
+
+    ErrorLog /proc/self/fd/2
+    LogLevel warn
+
+    <IfModule log_config_module>
+    
+        LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\"" combined
+        LogFormat "%h %l %u %t \"%r\" %>s %b" common
+        <IfModule logio_module>
+          LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-Agent}i\" %I %O" combinedio
+        </IfModule>
+        CustomLog /proc/self/fd/1 common
+    </IfModule>
+
+
+    <VirtualHost *:80>
+        ProxyPreserveHost On
+
+        ProxyPass / http://svc-proxy-beetroot:8080/
+        ProxyPassReverse / http://svc-proxy-beetroot:8080/    
+      ServerName dummy-host.example.com
+    </VirtualHost>

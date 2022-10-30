@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-argocd-apache
+  namespace: argocd-apache
+spec:
+  type: NodePort
+  selector:
+    app: apache
+  ports:
+    - protocol:
+      port: 80
+      targetPort: 80
+      nodePort: 30090
