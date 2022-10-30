@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: argocd-apache-deployment
-  namespace: argocd-apache
+  name: argocd-apache-prod
+  namespace: argocd-apache-prod
   labels:
     app: apache
 spec:
