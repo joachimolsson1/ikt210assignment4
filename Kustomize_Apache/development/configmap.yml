@@ -5,4 +5,4 @@ metadata:
   namespace: argocd-apache-dev
 data:
   index.html: |
-    <html><body><h1>The dev environment is created and working fine</h1></body></html>
+    <html><body><h1>The dev environment is created and working fine for Apache!</h1></body></html>

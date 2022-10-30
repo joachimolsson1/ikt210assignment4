@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: argocd-apache-prod
+  namespace: argocd-apache-prod
+  labels:
+    app: apache
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apache
+  template:
+    metadata:
+      labels:
+        app: apache
+    spec:
+      containers:
+        - name: apache
+          image: httpd:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: apache-index
+              mountPath: /usr/local/apache2/htdocs/
+      volumes:
+      - name: apache-index
+        configMap:
+          name: apache-index-config-map

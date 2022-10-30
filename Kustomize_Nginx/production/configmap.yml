@@ -5,4 +5,4 @@ metadata:
   namespace: argocd-apache-prod
 data:
   index.html: |
-    <html><body><h1>The prod environment is created and working fine for Apache!</h1></body></html>
+    <html><body><h1>The prod environment is created and working fine</h1></body></html>
