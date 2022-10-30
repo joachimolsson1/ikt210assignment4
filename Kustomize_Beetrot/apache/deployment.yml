@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app: apache
+        app: apache-argocd
     spec:
       containers:
         - name: apache-argocd
