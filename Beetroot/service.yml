@@ -4,6 +4,7 @@ metadata:
   name: svc-beetroot
   namespace: beetroot
 spec:
+  type: NodePort
   selector:
     app: beetroot
   ports:
