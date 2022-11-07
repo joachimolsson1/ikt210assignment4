@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: beetroot-deployment
+  namespace: beetroot
+  labels:
+    app: beetroot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: beetroot
+  template:
+    metadata:
+      labels:
+        app: beetroot
+    spec:
+      containers:
+      - name: beetroot
+        image: joachimo1/beetroot:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 8080
